@@ -78,14 +78,6 @@ RUN `
             "--add","Microsoft.VisualStudio.Component.VC.v141.MFC",`
             "--quiet", "--wait", "--norestart", "--nocache" `
         -NoNewWindow -Wait; 
-        #`
-    #`
-    #Install Windows 8.1 SDK from https://go.microsoft.com/fwlink/p/?LinkId=323507
-    # Invoke-WebRequest -UseBasicParsing https://go.microsoft.com/fwlink/p/?LinkId=323507 -OutFile sdksetup.exe; `
-    # Start-Process sdksetup.exe `
-    #     -ArgumentList `
-    #         "/features", "+", "/q" `
-    #     -NoNewWindow -Wait; 
     
 #Reset Shell to Command Prompt.
 SHELL ["cmd", "/S", "/C"]
