@@ -1,6 +1,6 @@
 # escape=`
 
-FROM mcr.microsoft.com/dotnet/framework/sdk:3.5 
+FROM mcr.microsoft.com/dotnet/framework/sdk:3.5-windowsservercore-ltsc2019 
 
 SHELL ["cmd", "/S", "/C"]
 
