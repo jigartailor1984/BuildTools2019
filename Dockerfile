@@ -1,8 +1,29 @@
 # escape=`
 
-ARG REPO=netfx
-FROM $REPO:4.8-Runtime
+ARG REPO=mcr.microsoft.com/windows/servercore
+FROM $REPO:ltsc2019
 
+# Install .NET Fx 3.5
+RUN curl -fSLo microsoft-windows-netfx3.zip https://dotnetbinaries.blob.core.windows.net/dockerassets/microsoft-windows-netfx3-1809.zip `
+    && tar -zxf microsoft-windows-netfx3.zip `
+    && del /F /Q microsoft-windows-netfx3.zip `
+    && DISM /Online /Quiet /Add-Package /PackagePath:.\microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab `
+    && del microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab `
+    && powershell Remove-Item -Force -Recurse ${Env:TEMP}\*
+
+# Install .NET Fx 4.8 runtime
+ENV `
+    # Enable detection of running in a container
+    DOTNET_RUNNING_IN_CONTAINER=true `
+    # Ngen workaround: https://github.com/microsoft/dotnet-framework-docker/issues/231
+    COMPLUS_NGenProtectedProcess_FeatureEnabled=0
+
+RUN `
+    # Installing .Net Frameworklist 4.8
+    curl -fSLo ndp48-x86-x64-allos-enu.exe https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0fd66638cde16859462a6243a4629a50/ndp48-x86-x64-allos-enu.exe `
+    && ndp48-x86-x64-allos-enu.exe /q `
+    && del /F /Q ndp48-x86-x64-allos-enu.exe
+    
 # Install NuGet CLI
 ENV NUGET_VERSION=5.3.1
 RUN mkdir "%ProgramFiles%\NuGet\latest" `
