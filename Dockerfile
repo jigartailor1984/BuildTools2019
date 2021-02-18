@@ -59,53 +59,51 @@ RUN `
             "--add","Microsoft.VisualStudio.Component.Windows10SDK.18362", `
             "--add","Microsoft.VisualStudio.Component.Windows10SDK.17763", `
             "--add","Microsoft.VisualStudio.Component.VC.CoreBuildTools", `
-            "--add","Microsoft.VisualStudio.Component.VC.Tools.x86.x64",  `
-            "--add","Microsoft.VisualStudio.Component.VC.Redist.14.Latest", `
-            "--add","Microsoft.VisualStudio.Component.VC.CMake.Project", ` 
-            "--add","Microsoft.VisualStudio.Component.TestTools.BuildTools", `
-            "--add","Microsoft.VisualStudio.Component.VC.ATL", `
-            "--add","Microsoft.VisualStudio.Component.VC.ATLMFC", `
-            "--add","Microsoft.VisualStudio.Component.VC.Modules.x86.x64", `
-            "--add","Microsoft.Net.Component.4.8.SDK", `
-            "--add","Microsoft.Net.Component.4.6.1.TargetingPack", `
-            "--add","Microsoft.VisualStudio.Component.VC.CLI.Support", `
-            "--add","Microsoft.VisualStudio.Component.TextTemplating", `
-            "--add","Microsoft.VisualStudio.Component.VC.CoreIde", `
-            "--add","Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core", `
-            "--add","Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset", `
-            "--add","Microsoft.VisualStudio.Component.VC.Llvm.Clang", `
-            "--add","Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Llvm.Clang", `
-            "--add","Microsoft.VisualStudio.Component.VC.v141.x86.x64", `
-            "--add","Microsoft.VisualStudio.Component.VC.140", `
-            "--add","Microsoft.VisualStudio.Component.NuGet.BuildTools", `
-            "--add","Microsoft.Net.Component.4.TargetingPack", `
-            "--add","Microsoft.Net.Component.4.5.TargetingPack", `
-            "--add","Microsoft.Net.Component.4.5.1.TargetingPack", `
-            "--add","Microsoft.Net.Component.4.5.2.TargetingPack", `
-            "--add","Microsoft.Net.Component.4.6.TargetingPack", `
-            "--add","Microsoft.Net.ComponentGroup.TargetingPacks.Common", `
-            "--add","Microsoft.NetCore.Component.Runtime.5.0", `
-            "--add","Microsoft.NetCore.Component.Runtime.3.1", `
-            "--add","Microsoft.NetCore.Component.SDK", `
-            "--add","Microsoft.Net.Core.Component.SDK.2.1", `
-            "--add","Microsoft.VisualStudio.Wcf.BuildTools.ComponentGroup", `
-            "--add","Microsoft.Net.Component.3.5.DeveloperTools", `
-            "--add","Microsoft.Net.ComponentGroup.4.6.1.DeveloperTools", `
-            "--add","Microsoft.Net.Component.4.6.2.TargetingPack", `
-            "--add","Microsoft.Net.ComponentGroup.4.6.2.DeveloperTools", `
-            "--add","Microsoft.Net.Component.4.7.TargetingPack", `
-            "--add","Microsoft.Net.ComponentGroup.4.7.DeveloperTools", `
-            "--add","Microsoft.Net.Component.4.7.1.TargetingPack", `
-            "--add","Microsoft.Net.ComponentGroup.4.7.1.DeveloperTools", `
-            "--add","Microsoft.Net.Component.4.8.TargetingPack", `
-            "--add","Microsoft.Net.ComponentGroup.4.8.DeveloperTools", `
-            "--add","Microsoft.VisualStudio.Component.FSharp.MSBuild", `
-            "--add","Microsoft.VisualStudio.Component.NuGet", `
-            "--add","Microsoft.VisualStudio.Component.SQL.SSDTBuildSku", `
-            "--add","Microsoft.VisualStudio.Component.Roslyn.LanguageServices", `
-            "--add","Microsoft.VisualStudio.Component.VC.Redist.MSM", `
-            "--add","Microsoft.VisualStudio.Component.VC.v141.ATL", `
-            "--add","Microsoft.VisualStudio.Component.VC.v141.MFC", `
+            "--add","Microsoft.VisualStudio.Component.VC.Tools.x86.x64",  `
+            "--add","Microsoft.VisualStudio.Component.VC.Redist.14.Latest", `
+            "--add","Microsoft.VisualStudio.Component.VC.CMake.Project", ` 
+            "--add","Microsoft.VisualStudio.Component.TestTools.BuildTools", `
+            "--add","Microsoft.VisualStudio.Component.VC.ATL", `
+            "--add","Microsoft.VisualStudio.Component.VC.ATLMFC", `
+            "--add","Microsoft.VisualStudio.Component.VC.14.27.MFC", `
+            "--add","Microsoft.VisualStudio.Component.VC.14.27.ATL", `
+            "--add","Microsoft.VisualStudio.Component.VC.14.16.MFC", `
+            "--add","Microsoft.VisualStudio.Component.VC.14.16.ATL", `
+            "--add","Microsoft.Net.Component.4.8.SDK", `
+            "--add","Microsoft.Net.Component.4.6.1.TargetingPack", `
+            "--add","Microsoft.VisualStudio.Component.VC.CLI.Support", `
+            "--add","Microsoft.VisualStudio.Component.TextTemplating", `
+            "--add","Microsoft.VisualStudio.Component.VC.CoreIde", `
+            "--add","Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core", `
+            "--add","Microsoft.VisualStudio.Component.VC.Llvm.ClangToolset", `
+            "--add","Microsoft.VisualStudio.Component.VC.Llvm.Clang", `
+            "--add","Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Llvm.Clang", `
+            "--add","Microsoft.VisualStudio.Component.NuGet.BuildTools", `
+            "--add","Microsoft.Net.Component.4.TargetingPack", `
+            "--add","Microsoft.Net.Component.4.5.TargetingPack", `
+            "--add","Microsoft.Net.Component.4.5.1.TargetingPack", `
+            "--add","Microsoft.Net.Component.4.5.2.TargetingPack", `
+            "--add","Microsoft.Net.Component.4.6.TargetingPack", `
+            "--add","Microsoft.Net.ComponentGroup.TargetingPacks.Common", `
+            "--add","Microsoft.NetCore.Component.Runtime.5.0", `
+            "--add","Microsoft.NetCore.Component.Runtime.3.1", `
+            "--add","Microsoft.NetCore.Component.SDK", `
+            "--add","Microsoft.Net.Core.Component.SDK.2.1", `
+            "--add","Microsoft.VisualStudio.Wcf.BuildTools.ComponentGroup", `
+            "--add","Microsoft.Net.Component.3.5.DeveloperTools", `
+            "--add","Microsoft.Net.ComponentGroup.4.6.1.DeveloperTools", `
+            "--add","Microsoft.Net.Component.4.6.2.TargetingPack", `
+            "--add","Microsoft.Net.ComponentGroup.4.6.2.DeveloperTools", `
+            "--add","Microsoft.Net.Component.4.7.TargetingPack", `
+            "--add","Microsoft.Net.ComponentGroup.4.7.DeveloperTools", `
+            "--add","Microsoft.Net.Component.4.7.1.TargetingPack", `
+            "--add","Microsoft.Net.ComponentGroup.4.7.1.DeveloperTools", `
+            "--add","Microsoft.Net.Component.4.8.TargetingPack", `
+            "--add","Microsoft.Net.ComponentGroup.4.8.DeveloperTools", `
+            "--add","Microsoft.VisualStudio.Component.FSharp.MSBuild", `
+            "--add","Microsoft.VisualStudio.Component.NuGet", `
+            "--add","Microsoft.VisualStudio.Component.SQL.SSDTBuildSku", `
+            "--add","Microsoft.VisualStudio.Component.Roslyn.LanguageServices", `
             "--quiet", "--wait", "--norestart", "--nocache" `
         -NoNewWindow -Wait; `
     `
@@ -123,18 +121,16 @@ ENV DOTNET_USE_POLLING_FILE_WATCHER=true `
 SHELL ["cmd", "/S", "/C"]
 
 # Set PATH in one layer to keep image size down.
-RUN setx /M PATH "%PATH%;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\TestAgent\Common7\IDE;%programfiles(x86)\\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow\;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\;%ProgramFiles(x86)%\Microsoft SDKs\ClickOnce\SignTool\;"
-#RUN setx /m PATH "%PATH%\;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\;%ProgramFiles(x86)%\Microsoft SDKs\ClickOnce\SignTool\;"
+RUN setx /M PATH "%PATH%;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\TestAgent\Common7\IDE;%programfiles(x86)\\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow\;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\;%ProgramFiles(x86)%\Microsoft SDKs\ClickOnce\SignTool\;" `
+    && setx /M DevEnvDir "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\"
 
 
 
-RUN del vs_BuildTools.exe `
-    && del Windows8.1sdksetup.exe `
-    #&& del Win10sdk1809setup.exe`
-    #&& del Win10sdk1903setup.exe`
-    `
+RUN `
     #Cleanup
+    del vs_BuildTools.exe `
+    && del Windows8.1sdksetup.exe `
+    `
     && rmdir /S /Q "%programfiles(x86)%\Microsoft Visual Studio\Installer" `
     && rmdir /S /Q "%ProgramData%\Package Cache" `
     && powershell Remove-Item -Force -Recurse "$env:Temp\*"
-
