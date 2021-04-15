@@ -1,7 +1,7 @@
 # escape=`
 
 ARG REPO=mcr.microsoft.com/windows/servercore
-FROM $REPO:ltsc2019
+FROM $REPO:ltsc2019 as netfx35
 
 # Install .NET Fx 3.5
 RUN curl -fSLo microsoft-windows-netfx3.zip https://dotnetbinaries.blob.core.windows.net/dockerassets/microsoft-windows-netfx3-1809.zip `
@@ -11,6 +11,7 @@ RUN curl -fSLo microsoft-windows-netfx3.zip https://dotnetbinaries.blob.core.win
     && del microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab `
     && powershell Remove-Item -Force -Recurse ${Env:TEMP}\*
 
+FROM netfx35 as netfx48runtime
 # Install .NET Fx 4.8 runtime
 ENV `
     # Enable detection of running in a container
@@ -30,6 +31,7 @@ RUN mkdir "%ProgramFiles%\NuGet\latest" `
     && curl -fSLo "%ProgramFiles%\NuGet\nuget.exe" https://dist.nuget.org/win-x86-commandline/v%NUGET_VERSION%/nuget.exe `
     && curl -fSLo "%ProgramFiles%\NuGet\latest\nuget.exe" https://dist.nuget.org/win-x86-commandline/v5.8.0/nuget.exe
 
+FROM netfx48runtime as mstest
 RUN `
     # Install VS Test Agent
     curl -fSLo vs_TestAgent.exe https://download.visualstudio.microsoft.com/download/pr/5f914955-f6c7-4add-8e47-2e090bdc02fa/8fd51571a9aff13c4381037ccb7559a3bb3e6527cbacf4816068e711dfe824f4/vs_TestAgent.exe `
@@ -37,6 +39,7 @@ RUN `
     && powershell -Command "if ($err = dir $Env:TEMP -Filter dd_setup_*_errors.log | where Length -gt 0 | Get-Content) { throw $err }" `
     && del vs_TestAgent.exe
 
+FROM mstest as buildtools
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 RUN ` 
@@ -117,14 +120,14 @@ RUN `
 ENV DOTNET_USE_POLLING_FILE_WATCHER=true `
     ROSLYN_COMPILER_LOCATION="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\Roslyn"
 
+FROM buildtools as final
+
 #Reset Shell to Command Prompt.
 SHELL ["cmd", "/S", "/C"]
 
 # Set PATH in one layer to keep image size down.
-RUN setx /M PATH "%PATH%;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\TestAgent\Common7\IDE;%programfiles(x86)\\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow\;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\;%ProgramFiles(x86)%\Microsoft SDKs\ClickOnce\SignTool\;" `
+RUN setx /M PATH "%PATH%;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\TestAgent\Common7\IDE;%programfiles(x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow\;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\;%ProgramFiles(x86)%\Microsoft SDKs\ClickOnce\SignTool\;%ProgramFiles%\NuGet\latest" `
     && setx /M DevEnvDir "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\"
-
-
 
 RUN `
     #Cleanup
