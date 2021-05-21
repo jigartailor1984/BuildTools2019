@@ -1,5 +1,5 @@
 # escape=`
-ARG REPO=jigartailor1984/buildtools2019
+ARG REPO=buildtools2019
 ARG TAG=latest
 FROM $REPO:$TAG
 
