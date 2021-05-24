@@ -2,11 +2,12 @@
 
 ## Command to build Image
 
+### Build specific mstest stage
+`docker build --pull --rm -f "BuildTools2019\Dockerfile" -t buildtools2019:latest --target mstest "BuildTools2019"`
+
 ### Build Tools 2019
 
 `docker build --pull --rm -f "BuildTools2019\Dockerfile" -t buildtools2019:latest "BuildTools2019"`
-
-`docker build --pull --rm -f "BuildTools2019\Dockerfile" -t buildtools2019:latest --target mstest "BuildTools2019"`
 
 ### Wix
 
