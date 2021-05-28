@@ -39,6 +39,14 @@ RUN `
     && powershell -Command "if ($err = dir $Env:TEMP -Filter dd_setup_*_errors.log | where Length -gt 0 | Get-Content) { throw $err }" `
     && del vs_TestAgent.exe
 
+FROM mstest as mstestfinal
+
+RUN setx /M PATH "%PATH%;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\TestAgent\Common7\IDE;%programfiles(x86)\Microsoft Visual Studio\2019\TestAgent\Common7\IDE\CommonExtensions\Microsoft\TestWindow\;%ProgramFiles%\NuGet\latest" `
+    `
+    && rmdir /S /Q "%programfiles(x86)%\Microsoft Visual Studio\Installer" `
+    && rmdir /S /Q "%ProgramData%\Package Cache" `
+    && powershell Remove-Item -Force -Recurse "$env:Temp\*"
+
 FROM mstest as buildtools
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
@@ -120,7 +128,7 @@ RUN `
 ENV DOTNET_USE_POLLING_FILE_WATCHER=true `
     ROSLYN_COMPILER_LOCATION="C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\Roslyn"
 
-FROM buildtools as final
+FROM buildtools as buildtoolsfinal
 
 #Reset Shell to Command Prompt.
 SHELL ["cmd", "/S", "/C"]
