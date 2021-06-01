@@ -31,7 +31,14 @@ RUN mkdir "%ProgramFiles%\NuGet\latest" `
     && curl -fSLo "%ProgramFiles%\NuGet\nuget.exe" https://dist.nuget.org/win-x86-commandline/v%NUGET_VERSION%/nuget.exe `
     && curl -fSLo "%ProgramFiles%\NuGet\latest\nuget.exe" https://dist.nuget.org/win-x86-commandline/v5.8.0/nuget.exe
 
-FROM netfx48runtime as mstest
+FROM netfx48runtime as git
+
+RUN curl -fSLo "Git-2.31.1-64-bit.exe" https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-64-bit.exe `
+    && start /w Git-2.31.1-64-bit.exe /VERYSILENT /SUPPRESSMSGBOXES /LOG=git-install.log /NORESTART /RESTARTAPPLICATIONS `
+    && del Git-2.31.1-64-bit.exe `
+    && del git-install.log
+
+FROM git as mstest
 RUN `
     # Install VS Test Agent
     curl -fSLo vs_TestAgent.exe https://download.visualstudio.microsoft.com/download/pr/5f914955-f6c7-4add-8e47-2e090bdc02fa/8fd51571a9aff13c4381037ccb7559a3bb3e6527cbacf4816068e711dfe824f4/vs_TestAgent.exe `
