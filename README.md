@@ -2,7 +2,7 @@
 
 ## Command to build Image
 
-### MSTest 2019
+### Git
 
 `docker build --pull --rm -f "BuildTools2019\Dockerfile" -t git:2.31.1 --target git "BuildTools2019"`
 
