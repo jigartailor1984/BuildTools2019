@@ -25,13 +25,18 @@ RUN `
     && ndp48-x86-x64-allos-enu.exe /q `
     && del /F /Q ndp48-x86-x64-allos-enu.exe
     
+FROM netfx48runtime as nuget
 # Install NuGet CLI
 ENV NUGET_VERSION=5.3.1
 RUN mkdir "%ProgramFiles%\NuGet\latest" `
     && curl -fSLo "%ProgramFiles%\NuGet\nuget.exe" https://dist.nuget.org/win-x86-commandline/v%NUGET_VERSION%/nuget.exe `
     && curl -fSLo "%ProgramFiles%\NuGet\latest\nuget.exe" https://dist.nuget.org/win-x86-commandline/v5.8.0/nuget.exe
 
-FROM netfx48runtime as git
+FROM nuget as nugetfinal
+
+RUN setx /M PATH "%PATH%;%ProgramFiles%\NuGet\latest;"
+
+FROM nuget as git
 
 RUN curl -fSLo "Git-2.31.1-64-bit.exe" https://github.com/git-for-windows/git/releases/download/v2.31.1.windows.1/Git-2.31.1-64-bit.exe `
     && start /w Git-2.31.1-64-bit.exe /VERYSILENT /SUPPRESSMSGBOXES /LOG=git-install.log /NORESTART /RESTARTAPPLICATIONS `
