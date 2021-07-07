@@ -1,6 +1,6 @@
 # escape=`
-ARG REPO=buildtools2019
-ARG TAG=latest
+ARG REPO=buildtools
+ARG TAG=2019
 FROM $REPO:$TAG
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
