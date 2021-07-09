@@ -43,6 +43,10 @@ RUN curl -fSLo "Git-2.31.1-64-bit.exe" https://github.com/git-for-windows/git/re
     && del Git-2.31.1-64-bit.exe `
     && del git-install.log
 
+FROM git as gitfinal
+
+RUN setx /M PATH "%PATH%;%ProgramFiles%\NuGet\latest;"
+
 FROM git as mstest
 RUN `
     # Install VS Test Agent

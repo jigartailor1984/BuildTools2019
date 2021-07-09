@@ -2,9 +2,13 @@
 
 ## Command to build Image
 
+### nuget
+
+`docker build --pull --rm -f "BuildTools2019\Dockerfile" -t nuget:5.8.0 --target nugetfinal "BuildTools2019"`
+
 ### Git
 
-`docker build --pull --rm -f "BuildTools2019\Dockerfile" -t git:2.31.1 --target git "BuildTools2019"`
+`docker build --pull --rm -f "BuildTools2019\Dockerfile" -t git:2.31.1 --target gitfinal "BuildTools2019"`
 
 ### MSTest 2019
 
